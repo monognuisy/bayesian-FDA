@@ -371,26 +371,31 @@ Plugging-in equation (22) into the denominator of mean, the mean can be simplifi
 <figcaption align="center">(a): Well classified</figcaption>
 </figure>
 
+<br /><br />
+
 <figure>
 <img src="./images/Figure_7.png">
 <figcaption align="center">(b): Good with Bayesian, Bad with MLE</figcaption>
 </figure>
+
+<br /><br />
 
 <figure>
 <img src="./images/Figure_5.png">
 <figcaption align="center">(c): Good with Bayesian, Bad with MLE</figcaption>
 </figure>
 
+<br /><br />
+
 <figure>
 <img src="./images/Figure_6.png">
 <figcaption align="center">(d): Slightly outlying training data</figcaption>
-<br />
+<br /><br />
 <figcaption><b>Fig. 1 - Result of FDA with MLE & Bayesian</b></figcaption>
 </figure>
 </div>
 
-<br />
-<br />
+<br /><br />
 
 Figure 1 shows the result comparing $\bf w$ with MLE and Bayesian approach with $\sigma^2 / \sigma^2_{\bf w} = 0.1$. Bold dots are training data and light dots are testing data. The pink line is the boundary with MLE and the green one is with Bayesian approach. 
 
@@ -513,10 +518,12 @@ This has same form to **Gaussian Process** with kernel vector $\bf k$ and kernel
 <figcaption align="center">(a): Mean of classifier</figcaption>
 </figure>
 
+<br /><br />
+
 <figure>
 <img src="./images/Kernel_2.png">
 <figcaption align="center">(b): Variance of classifier</figcaption>
-<br />
+<br /><br />
 <figcaption><b>Fig. 2 - Result of Kernel-extended Bayesian FDA</b></figcaption>
 </figure>
 
