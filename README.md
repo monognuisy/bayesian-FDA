@@ -113,7 +113,7 @@ Posterior distribution $p({\bf w} | {\cal D})$ can be calculated with Bayes' rul
 \begin{aligned}
 	p({\bf w} | {\cal D}) &= p({\bf w}) p({\cal D} | {\bf w}) \\
 	&= \prod_{n = 1}^N p({\bf w}) p(t_n | {\bf x}_n, {\bf w}) \\
-	&= C ~ \exp( \textcircled{\scriptsize 1} )
+	&= C ~ \exp( ① )
 \end{aligned}
 \end{equation}
 ```
@@ -123,7 +123,7 @@ As both likelihood and prior are gaussian, posterior is also gaussian. So, expan
 ```math
 \begin{equation*}
 \begin{aligned}
-	\textcircled{\scriptsize 1} &= -\frac{1}{2\sigma^2}  \left( \sum_{n = 1}^N \left(  {\bf w}^\top{\bf x}_n{\bf x}_n^\top{\bf w} - 2 t_n {\bf w}^\top {\bf x}_n + t_n^2 \right) + \frac{\sigma^2}{\sigma_{\bf w} ^2} {\bf w}^\top {\bf w}  \right)
+	① &= -\frac{1}{2\sigma^2}  \left( \sum_{n = 1}^N \left(  {\bf w}^\top{\bf x}_n{\bf x}_n^\top{\bf w} - 2 t_n {\bf w}^\top {\bf x}_n + t_n^2 \right) + \frac{\sigma^2}{\sigma_{\bf w} ^2} {\bf w}^\top {\bf w}  \right)
 	\\
 	&= -\frac{1}{2\sigma^2}  \left( \sum_{n \in {\cal C}_1} \left(  {\bf w}^\top{\bf x}_n{\bf x}_n^\top{\bf w} - 2 \frac{N}{N_1} {\bf w}^\top {\bf x}_n + \frac{N^2}{N_1^2} \right) + \sum_{n \in {\cal C}_2} \left(  {\bf w}^\top{\bf x}_n{\bf x}_n^\top{\bf w} + 2 \frac{N}{N_2} {\bf w}^\top {\bf x}_n + \frac{N^2}{N_2^2} \right) + \frac{\sigma^2}{\sigma_{\bf w} ^2} {\bf w}^\top {\bf w}  \right)
 	\\
@@ -159,12 +159,12 @@ which let
 \end{equation}
 ```
 
-So, $\textcircled{\scriptsize 1}$ is
+So, $①$ is
 
 ```math
 \begin{equation}
 \begin{aligned}
-	\textcircled{\scriptsize 1} &= -\frac{1}{2\sigma^2} \left(
+	① &= -\frac{1}{2\sigma^2} \left(
 		{\bf w}^\top \left( {\bf S}_{\rm W} + \frac{N_1 N_2}{N} {\bf S}_{\rm B} + \frac{\sigma^2}{\sigma_{\bf w}^2}{\bf I} \right)
 		{\bf w} - 2N{\bf w}^\top (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)
 	\right)  + C 
