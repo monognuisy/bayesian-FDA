@@ -30,6 +30,7 @@ Let two mutually exclusive classes be ${\cal C}_1$, ${\cal C}_2$, and the number
 	\Sigma_1 &= \frac{1}{N_1} \sum_{n \in {\cal C}_1} ({\bf x}_n - \boldsymbol{\mu}_1)({\bf x}_n - \boldsymbol{\mu}_1)^\top \\
 	\Sigma_2 &= \frac{1}{N_2} \sum_{n \in {\cal C}_2} ({\bf x}_n - \boldsymbol{\mu}_2)({\bf x}_n - \boldsymbol{\mu}_2)^\top
 \end{aligned}
+\tag{1}
 \end{equation}
 ```
 
@@ -41,6 +42,7 @@ With the number of whole data $N = N_1 + N_2$, the mean of whole data is as foll
 	\boldsymbol{\mu} &= \frac{1}{N} \sum_{n =1}^N {\bf x}_n \\
 	&= \frac{1}{N} (N_1 \boldsymbol{\mu}_1 + N_2 \boldsymbol{\mu}_2)
 \end{aligned}
+\tag{2}
 \end{equation}
 ```
 
@@ -53,6 +55,7 @@ t_n =
 	\dfrac{N}{N_1} & (n \in {\cal C}_1) \\\\
 	-\dfrac{N}{N_2} & (n \in {\cal C}_2)
 \end{cases}
+\tag{3}
 \end{equation}
 ```
 
@@ -63,6 +66,7 @@ Then, the Loss function is
 ```math
 \begin{equation}
 	L = \frac{1}{2} \sum_{n = 1}^N ({\bf w}^\top {\bf x}_n + w_0 - t_n)^2
+	\tag{4}
 \end{equation}
 ```
 
@@ -74,6 +78,7 @@ If the data ${\bf x}_n$ are centralized (${\bf x}_n \leftarrow {\bf x}_n - \bold
 ```math
 \begin{equation} 
 	L = \frac{1}{2} \sum_{n = 1}^N ({\bf w}^\top {\bf x}_n - t_n)^2 
+	\tag{5}
 \end{equation}
 ```
 
@@ -89,6 +94,7 @@ Without loss of generality, assume that all data have been centralized. Then, we
 	p(t | {\bf x}, {\bf w}) &= {\cal N} (t | {\bf w}^\top {\bf x}, \sigma^2) \\
 	&= \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left(-\frac{1}{2 \sigma^2} ({\bf w}^\top {\bf x} - t)^2 \right)
 \end{aligned}
+\tag{6}
 \end{equation}
 ```
 
@@ -101,6 +107,7 @@ The prior distribution of parameter $\bf w$ is
 \begin{aligned}
 	p({\bf w}) &= {\cal N} ({\bf w} | {\bf 0}, \sigma_{\bf w}^2 {\bf I})
 \end{aligned}
+\tag{7}
 \end{equation}
 ```
 
@@ -115,6 +122,7 @@ Posterior distribution $p({\bf w} | {\cal D})$ can be calculated with Bayes' rul
 	&= \prod_{n = 1}^N p({\bf w}) p(t_n | {\bf x}_n, {\bf w}) \\
 	&= C ~ \exp( ① )
 \end{aligned}
+\tag{8}
 \end{equation}
 ```
 
@@ -133,6 +141,7 @@ As both likelihood and prior are gaussian, posterior is also gaussian. So, expan
 		\right) {\bf w} - 2N{\bf w}^\top(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)
 	 \right) + C
 \end{aligned} 
+\tag{9}
 \end{equation*}
 ```
 
@@ -144,6 +153,7 @@ Introduce *within-class* covariance ${\bf S}_{\rm W}$ and *between-class* covari
 	{\bf S}_{\rm W} &= \sum_{n \in {\cal C}_1} ({\bf x}_n - \boldsymbol{\mu}_1) ({\bf x}_n - \boldsymbol{\mu}_1)^\top +  \sum_{n \in {\cal C}_2} ({\bf x}_n - \boldsymbol{\mu}_2) ({\bf x}_n - \boldsymbol{\mu}_2)^\top \\
 	{\bf S}_{\rm B} &= (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)(\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)^\top
 \end{aligned}
+\tag{10}
 \end{equation}
 ```
 
@@ -156,6 +166,7 @@ which let
 	&= {\bf S}_{\rm W} + N_1 \boldsymbol{\mu}_1 \boldsymbol{\mu}_1^\top + N_2 \boldsymbol{\mu}_2 \boldsymbol{\mu}_2^\top \\
 	&= {\bf S}_{\rm W} + \frac{N_1 N_2}{N} {\bf S}_{\rm B} 
 \end{aligned}
+\tag{11}
 \end{equation}
 ```
 
@@ -171,6 +182,7 @@ So, $①$ is
 	\\\\
 	&= -\frac{1}{2} ({\bf w} - \boldsymbol{\mu}_{{\bf w}|{\cal D}})^\top \Sigma_{{\bf w}|{\cal D}}^{-1} ({\bf w} - \boldsymbol{\mu}_{{\bf w}|{\cal D}}) + C
 \end{aligned}
+\tag{12}
 \end{equation}
 ```
 
@@ -179,6 +191,7 @@ And the posterior $p({\bf w} | {\cal D})$ is
 ```math
 \begin{equation}
 	p({\bf w} | {\cal D}) = {\cal N} (\boldsymbol{\mu}_{{\bf w}|{\cal D}}, \Sigma_{{\bf w}|{\cal D}})
+	\tag{13}
 \end{equation}
 ```
 
@@ -191,6 +204,7 @@ where
 	\\
 	\Sigma_{{\bf w} | {\cal D}} &= \sigma^2 \left( {\bf S}_{\rm W} + \frac{N_1 N_2}{N} {\bf S}_{\rm B} + \frac{\sigma^2}{\sigma_{\bf w}^2}{\bf I} \right)^{-1}
 \end{aligned}
+\tag{14}
 \end{equation}
 ```
 
@@ -201,6 +215,7 @@ The predictive distribution $p(t | {\bf x}, {\cal D})$ is the integral of produc
 ```math
 \begin{equation}
 	p(t | {\bf x}, {\cal D}) = \int _{\cal W} p(t | {\bf x}, {\bf w}) p({\bf w} | {\cal D}) {~\rm d{\bf w}}
+	\tag{15}
 \end{equation}
 ```
 
@@ -219,6 +234,7 @@ Also this is a gaussian, consider inside of $\exp$ only. Because the result of i
 	 {\bf w} - 2N{\bf w}^\top (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2 + t{\bf x}/N) + t^2
 	 \right) + \cdots 
 \end{aligned}
+\tag{16}
 \end{equation*}
 ```
 
@@ -235,6 +251,7 @@ Marginalizing out $\bf w$, the inside of $\exp$ term of distribution w.r.t. $t$ 
 		t - \frac{N{\bf x}^\top \Delta^{-1} (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)}{(1 - {\bf x}^\top \Delta^{-1} {\bf x})}
 	\right)^2
 \end{aligned}
+\tag{17}
 \end{equation}
 ```
 
@@ -247,6 +264,7 @@ Therefore, the mean and variance of predictive distribution is as follows:
 	\\\\
 	{\rm Var}[t | {\bf x}, {\cal D}] &= \cfrac{\sigma^2}{1 - {\bf x}^\top \left( {\bf x}{\bf x}^\top + {\bf S}_{\rm W} + \dfrac{N_1 N_2}{N} {\bf S}_{\rm B} + \dfrac{\sigma^2}{\sigma^2_{\bf w}} {\bf I}  \right)^{-1} {\bf x}}
 \end{aligned}
+\tag{18}
 \end{equation}
 ```
 
@@ -259,6 +277,7 @@ Introduce matrix ${\bf X}$ such that
 		{\bf x}_1 & \cdots & {\bf x}_N \\
 		\vert & & \vert
 	\end{pmatrix} \in \mathbb{R}^{D \times N}
+	\tag{19}
 \end{equation}
 ```
 
@@ -270,10 +289,11 @@ Then,
 	\sum_{n=1}^N {\bf x}_n {\bf x}_n^\top &= {\bf S}_{\rm W} + \frac{N_1 N_2}{N} {\bf S}_{\rm B}  \\
 	&= {\bf X}{\bf X}^\top
 \end{aligned}
+\tag{20}
 \end{equation}
 ```
 
-So, equation (16) can be simplified as follows:
+So, equation (18) can be simplified as follows:
 
 ```math
 \begin{equation}
@@ -282,6 +302,7 @@ So, equation (16) can be simplified as follows:
 	\\\\
 	{\rm Var}[t | {\bf x}, {\cal D}] &= \cfrac{\sigma^2}{1 - {\bf x}^\top \left( {\bf x}{\bf x}^\top + {\bf X}{\bf X}^\top + \dfrac{\sigma^2}{\sigma^2_{\bf w}} {\bf I}  \right)^{-1} {\bf x}}
 \end{aligned}
+\tag{21}
 \end{equation}
 ```
 
@@ -293,14 +314,14 @@ In equation (19), the denominator of mean and variance is same. Simplify it by u
 		1 + {\bf x}^\top \left( 
 			{\bf X}{\bf X}^\top + \frac{\sigma^2}{\sigma^2_{\bf w}} {\bf I}
 		\right) ^{-1} {\bf x}
-	\right) ^{-1}  \\
+	\right) ^{-1} \tag{22} \\
 	&= \left(
 		1 + \frac{\sigma^2_{\bf w}}{\sigma^2} \left(
 			{\bf x}^\top {\bf x} - {\bf x}^\top {\bf X} \left( 
 				{\bf X}^\top{\bf X} + \frac{\sigma^2}{\sigma^2_{\bf w}}
 			\right) {\bf X}^\top {\bf x}
 		\right)
-	\right) 
+	\right) \tag{23}
 \end{align}
 ```
 
@@ -312,6 +333,7 @@ Plugging-in equation (21) into variance:
 	{\rm Var}[t | {\bf x}, {\cal D}] &= \sigma^2 + \sigma^2_{\bf w} {\bf x}^\top{\bf x} - \sigma^2_{\bf w} {\bf x}^\top {\bf X} \left( {\bf X}^\top{\bf X} + \frac{\sigma^2}{\sigma^2_{\bf w}} {\bf I} \right)^{-1} {\bf X}^\top {\bf x} \\
 	&\ge \sigma^2
 \end{aligned}
+\tag{24}
 \end{equation}
 ```
 
@@ -327,16 +349,18 @@ Using Woodbury identity in numerator of mean:
 	\right)^{-1} (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2) -
 	\cfrac{N{\bf x} ^\top \left({\bf X}{\bf X}^\top + \dfrac{\sigma^2}{\sigma^2_{\bf w}} {\bf I} \right)^{-1} {\bf x}{\bf x}^\top \left({\bf X}{\bf X}^\top + \dfrac{\sigma^2}{\sigma^2_{\bf w}} {\bf I} \right)^{-1} (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)}{1 + {\bf x}^\top \left({\bf X}{\bf X}^\top + \dfrac{\sigma^2}{\sigma^2_{\bf w}} {\bf I} \right)^{-1}{\bf x}}
 \end{aligned}
+\tag{25}
 \end{equation*}
 ```
 
-Plugging-in equation (20) into the denominator of mean, the mean can be simplified as follows:
+Plugging-in equation (22) into the denominator of mean, the mean can be simplified as follows:
 
 ```math
 \begin{equation}
 	\mathbb{E}[t | {\bf x}, {\cal D}] = N{\bf x}^\top \left(
 	{\bf X}{\bf X}^\top + \dfrac{\sigma^2}{\sigma^2_{\bf w}} {\bf I}
 	\right)^{-1} (\boldsymbol{\mu}_1 - \boldsymbol{\mu}_2)
+	\tag{26}
 \end{equation}
 ```
 
@@ -360,8 +384,13 @@ Plugging-in equation (20) into the denominator of mean, the mean can be simplifi
 <figure>
 <img src="./images/Figure_6.png">
 <figcaption align="center">(d): Slightly outlying training data</figcaption>
+<br />
 <figcaption><b>Fig. 1 - Result of FDA with MLE & Bayesian</b></figcaption>
 </figure>
+</div>
+
+<br />
+<br />
 
 Figure 1 shows the result comparing $\bf w$ with MLE and Bayesian approach with $\sigma^2 / \sigma^2_{\bf w} = 0.1$. Bold dots are training data and light dots are testing data. The pink line is the boundary with MLE and the green one is with Bayesian approach. 
 
@@ -378,6 +407,7 @@ Consider following mapping function $\phi$ such that
 ```math
 \begin{equation}
 	\phi: \mathbb{R}^D \to \mathbb{R}^M
+	\tag{27}
 \end{equation}
 ```
 
@@ -389,6 +419,7 @@ and mapped data $\phi({\bf x}) \in \mathbb{R}^M$. Then, the mean of mapped data 
 	\boldsymbol{\mu}_1^\phi &= \frac{1}{N_1} \sum_{n \in {\cal C}_1} \phi({\bf x}_n) \\
 	\boldsymbol{\mu}_2^\phi &= \frac{1}{N_2} \sum_{n \in {\cal C}_2} \phi({\bf x}_n)
 \end{aligned}
+\tag{28}
 \end{equation}
 ```
 
@@ -397,6 +428,7 @@ If the mapped data centralized (or do centralize), the loss function is
 ```math
 \begin{equation}
 	\frac{1}{2} \sum_{n = 1}^N ({\bf w}^\top \phi({\bf x}_n) - t_n)^2
+	\tag{29}
 \end{equation} 
 ```
 
@@ -412,6 +444,7 @@ Introduce matrices
 	\end{pmatrix} \in \mathbb{R}^{M \times N} \\\\
 	{\bf t} &= (t_1, \cdots, t_N)^\top \in \mathbb{R}^{N}
 \end{aligned}
+\tag{30}
 \end{equation}
 ```
 
@@ -429,16 +462,18 @@ For positive-definite function $k$, introduce matrices
 	\end{pmatrix} \\\\
 	{\bf k} &= (k({\bf x}, {\bf x}_1), \cdots, k({\bf x}, {\bf x}_N))^\top 
 \end{aligned}
+\tag{31}
 \end{equation}
 ```
 
-Equation (23; predictive mean) can be written as follows:
+Equation (26; predictive mean) can be written as follows:
 
 ```math
 \begin{equation}
 	\mathbb{E}[t | {\bf x}, {\cal D}] = {\bf x}^\top {\bf X} \left(
 	{\bf X}^\top{\bf X} + \dfrac{\sigma^2}{\sigma^2_{\bf w}} {\bf I}
 	\right)^{-1} {\bf t}
+	\tag{32}
 \end{equation}
 ```
 
@@ -455,6 +490,7 @@ The mean and variance of mapped data are as follows:
 	{\rm Var}[t | {\bf x}, {\cal D}] &= \sigma^2 + \sigma^2_{\bf w} \phi({\bf x})^\top\phi({\bf x}) - \sigma^2_{\bf w} \phi({\bf x})^\top \boldsymbol{\Phi} \left( \boldsymbol{\Phi}^\top\boldsymbol{\Phi} + \frac{\sigma^2}{\sigma^2_{\bf w}} {\bf I} \right)^{-1} \boldsymbol{\Phi}^\top \phi({\bf x}) \\
 	&= \sigma^2 + \sigma^2_{\bf w} k({\bf x}, {\bf x}) - \sigma^2_{\bf w} {\bf k}^\top \left( {\bf K} + \frac{\sigma^2}{\sigma^2_{\bf w}} {\bf I} \right)^{-1} {\bf k}
 \end{aligned}
+\tag{33}
 \end{equation}
 ```
 
@@ -466,6 +502,7 @@ This has same form to **Gaussian Process** with kernel vector $\bf k$ and kernel
 	{\bf k}'_{i} &= \sigma^2_{{\bf w}} \phi({\bf x})^\top \phi({\bf x}_i) \\
 	{\bf K}'_{ij} &= \sigma^2_{\bf w} \phi({\bf x}_i)^\top \phi({\bf x}_j) + \sigma^2 \delta_{ij}
 \end{aligned}
+\tag{34}
 \end{equation}
 ```
 
@@ -479,8 +516,11 @@ This has same form to **Gaussian Process** with kernel vector $\bf k$ and kernel
 <figure>
 <img src="./images/Kernel_2.png">
 <figcaption align="center">(b): Variance of classifier</figcaption>
+<br />
 <figcaption><b>Fig. 2 - Result of Kernel-extended Bayesian FDA</b></figcaption>
 </figure>
+
+<br /><br />
 
 Figure 2 shows the result of kernel extended Bayesian FDA, which is the classification with gaussian process. The kernel function is gaussian with regularization term from Bayesian approach.
 
