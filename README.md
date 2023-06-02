@@ -145,7 +145,7 @@ As both likelihood and prior are gaussian, posterior is also gaussian. So, expan
 \end{equation*}
 ```
 
-Introduce *within-class* covariance ${\bf S}_{\rm W}$ and *between-class* covariance ${\bf S}_{\rm B}$
+Introduce *within-class* covariance $`{\bf S}_{\rm W}`$ and *between-class* covariance $`{\bf S}_{\rm B}`$
 
 ```math
 \begin{equation}
@@ -219,7 +219,7 @@ The predictive distribution $p(t | {\bf x}, {\cal D})$ is the integral of produc
 \end{equation}
 ```
 
-Also this is a gaussian, consider inside of $\exp$ only. Because the result of integration with respect to $\bf w$ is the probability distribution with respect to $t$, the inside-$\exp$ term can be simplified as follows:
+Also this is a gaussian, consider inside of $`\exp`$ only. Because the result of integration with respect to $\bf w$ is the probability distribution with respect to $t$, the inside-$`\exp`$ term can be simplified as follows:
 
 ```math
 \begin{equation*}
