@@ -4,7 +4,7 @@ Bayesian approach for FDA.
 
 ## **⚠️ Notice**
 
-This document is fork(+translation) of report for 'Machine Learning Algorithms' class in Hanyang Univ., Korea.  The original(Korean) report pdf file and tex file will not be uploaded until the grading finishes.
+This document is fork(+translation) of report for 'Machine Learning Algorithms' class in Hanyang Univ., Korea.  The original(Korean) report pdf file and tex file included.
 
 ## **Author**
 
