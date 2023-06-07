@@ -10,7 +10,7 @@ This document is fork(+translation) of report for 'Machine Learning Algorithms' 
 
 Sungmin Yoo
 
-Huiseong Kim
+Heesung Kim
 
 ---
 
